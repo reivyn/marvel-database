@@ -1,0 +1,35 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      (click)="drawer.toggle()"
+      *ngIf="isHandset$ | async">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <span style="margin: 0 12px 0 4px">Marvel Database</span>
+    <mat-nav-list *ngIf="!(isHandset$ | async)" role="navigation"
+    style="display: flex; flex-direction: row; align-items: center;
+    list-style-position: inside; padding: 0; margin: 0;">
+      <a *ngFor="let menuItem of menuList" mat-button [routerLink]="menuItem.url"
+         style="border-radius: 5px; margin: 0 4px;">{{menuItem.title}}</a>
+    </mat-nav-list>
+    <div style="width: 100%; display: flex; justify-content: flex-end;">
+      <fa-icon [icon]="faAtomIcon"></fa-icon>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="'navigation'" mode="over">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a *ngFor="let menuItem of menuList" mat-list-item [routerLink]="menuItem.url"
+         style="border-radius: 5px; margin: 0 4px;">{{menuItem.title}}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content></mat-sidenav-content>
+</mat-sidenav-container>
+
