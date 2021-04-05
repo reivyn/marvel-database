@@ -12,11 +12,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HomeComponent } from './pages/home/home.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatCardModule,
     FontAwesomeModule
   ],
   providers: [],
