@@ -1,9 +1,11 @@
 // Header Style Rules
+@import "../../shared/variables.sass"
+
 header#home-header
   position: relative
   overflow: hidden
   height: 15rem
-  background: #673ab7
+  background: $menu-color
 
   .home-header-section
     width: 100%
@@ -13,10 +15,13 @@ header#home-header
     left: 50%
     -ms-transform: translate(-50%, -50%)
     transform: translate(-50%, -50%)
-    color: #ffffff
+    color: $generic-white
 
     h1.mat-h1
       font-size: 2.5em
+
+    h2.mat-h2
+      margin: 12px
 
 // Main Container Style Rules
 main.container
