@@ -14,12 +14,14 @@ import { MatListModule } from '@angular/material/list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './pages/home/home.component';
 import {MatCardModule} from '@angular/material/card';
+import { FooterComponent } from './pages/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
