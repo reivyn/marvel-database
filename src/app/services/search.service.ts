@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {catchError, map, retry, shareReplay} from 'rxjs/operators';
-import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
-import {throwError} from 'rxjs';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {handleError} from '../shared/handle-error';
 
 @Injectable({
   providedIn: 'root'
@@ -27,33 +27,52 @@ export class SearchService {
     options.params = options.params.append('offset', pageIndex);
     options.params = options.params.append('nameStartsWith', nameStartsWith);
 
-    console.log('ID')
     return this.http.get<any>(environment.marvelCharactersAPI, options)
       .pipe(
         retry(3),
-        catchError(this.handleError),
+        catchError(handleError),
         map(source => source['data']),
         shareReplay()
       );
   }
 
   /**
-   * HandleError
-   * @param error
-   * @private
+   * Get Marvel Comics by ID
+   * @param pageIndex
+   * @param nameStartsWith
    */
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${JSON.stringify(error.error)}`);
-    }
-    // Return an observable with a user-facing error message.
-    return throwError('Something bad happened; please try again later.');
+  getComicById(pageIndex, nameStartsWith) {
+    const options = {params: this.defaultParams}
+    options.params = options.params.append('offset', pageIndex);
+    options.params = options.params.append('titleStartsWith', nameStartsWith);
+
+    return this.http.get<any>(environment.marvelComicsAPI, options)
+      .pipe(
+        retry(3),
+        catchError(handleError),
+        map(source => source['data']),
+        shareReplay()
+      );
   }
+
+  /**
+   * Get Marvel Stories by ID
+   * @param pageIndex
+   * @param nameStartsWith
+   */
+  getStorieById(pageIndex, nameStartsWith) {
+    const options = {params: this.defaultParams}
+    options.params = options.params.append('offset', pageIndex);
+    options.params = options.params.append('nameStartsWith', nameStartsWith);
+
+    console.log('ID')
+    return this.http.get<any>(environment.marvelCharactersAPI, options)
+      .pipe(
+        retry(3),
+        catchError(handleError),
+        map(source => source['data']),
+        shareReplay()
+      );
+  }
+
 }

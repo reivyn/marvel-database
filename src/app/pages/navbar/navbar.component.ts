@@ -18,8 +18,8 @@ export class NavbarComponent {
 
   menuList = [
     {title: 'Home', url: ''},
-    {title: 'Characters', url: ''},
-    {title: 'Comics',url: ''},
+    {title: 'Characters', url: 'characters'},
+    {title: 'Comics',url: 'comics'},
     {title: 'Stories',url: ''},
     {title: 'My Bookmarks',url: ''}]
 

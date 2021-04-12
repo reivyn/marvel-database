@@ -10,12 +10,18 @@ import {map} from 'rxjs/operators';
   styleUrls: ['./characters.component.sass']
 })
 export class CharactersComponent implements OnInit {
-  @ViewChild('charactersPaginator') charactersPaginator : MatPaginator;
+  @ViewChild('cardsPaginator') charactersPaginator : MatPaginator;
 
   charactersData$: any;
   paginatorLength = 0;
   searchParams = {page: 0, type: 'Character'};
   hasSearchText = false;
+  buttons = {
+    first: 'stories',
+    second: 'comics',
+    third: 'characters'
+  }
+  loadingFlag = true;
 
   constructor(private charactersApi: CharactersService) {}
 
@@ -29,9 +35,10 @@ export class CharactersComponent implements OnInit {
    * @param searchName
    */
   getAllCharacters(page = 0): Observable<any> {
-    return this.charactersApi.getAllCharacter(page)
+    return this.charactersApi.get(page)
       .pipe(
         map(characters => {
+          this.loadingFlag = false;
           if(page === 0) {this.charactersPaginator.firstPage()}
           this.paginatorLength = characters['total'] || 0;
           return characters['results']
@@ -45,6 +52,7 @@ export class CharactersComponent implements OnInit {
    */
   changePage($event: PageEvent) {
     if (!this.hasSearchText) {
+      this.loadingFlag = true;
       this.charactersData$ = this.getAllCharacters($event.pageIndex * 20);
     } else {
       this.searchParams = {page: $event.pageIndex * 20, type: 'Character'};
@@ -56,14 +64,13 @@ export class CharactersComponent implements OnInit {
    * @param $event
    */
   getSearchResult($event) {
+    this.hasSearchText = !!$event;
     if ($event) {
       if($event.offset === 0){ this.charactersPaginator.firstPage()}
       this.charactersData$ = $event.data;
       this.paginatorLength = $event.totalItems;
-      this.hasSearchText = true;
     } else {
       this.paginatorLength = 0;
-      this.hasSearchText = false;
       this.charactersData$ = this.getAllCharacters(0);
     }
   }

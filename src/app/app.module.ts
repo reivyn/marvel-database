@@ -13,6 +13,9 @@ import {CharactersComponent} from './pages/characters/characters.component';
 import {MaterialSharedModule} from './shared/material-module';
 import {FormsModule} from '@angular/forms';
 import { SearchComponent } from './pages/search/search.component';
+import { ComicsComponent } from './pages/comics/comics.component';
+import {MarvelCardsComponent} from './pages/marvel-cards/marvel-cards.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { SearchComponent } from './pages/search/search.component';
     HomeComponent,
     CharactersComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
+    ComicsComponent,
+    MarvelCardsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +36,7 @@ import { SearchComponent } from './pages/search/search.component';
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
