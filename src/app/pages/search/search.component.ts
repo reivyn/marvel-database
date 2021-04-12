@@ -50,11 +50,10 @@ export class SearchComponent implements OnInit, OnChanges {
           return this.searchData$ =
             this.searchService[`get${this.searchParams.type}ById`](params.page || 0, params.value)
               .pipe(
-                map(characters => {
-                  console.log(characters)
-                  this.totalItems = characters['total'];
-                  this.currentOffset = characters['offset'];
-                  return characters['results']
+                map(value => {
+                  this.totalItems = value['total'];
+                  this.currentOffset = value['offset'];
+                  return value['results']
                 }))
         }
       )).subscribe(() => {

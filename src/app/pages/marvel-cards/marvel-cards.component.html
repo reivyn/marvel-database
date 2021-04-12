@@ -1,0 +1,21 @@
+<section id="quick-access" arial-label="Sections Quick Access">
+  <mat-card *ngFor="let info of (marvelData$ | async)" class="qa-sections-card" aria-label="Section Card">
+    <mat-card-header [ngSwitch]="type">
+      <mat-card-title *ngSwitchCase="'characters'">{{info.name}}</mat-card-title>
+      <mat-card-title *ngSwitchCase="'comics'">{{info.title}}</mat-card-title>
+      <mat-card-title *ngSwitchCase="'stories'">{{info.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="info['thumbnail'].path + '.' + info['thumbnail']['extension']"
+         alt="Photo of a Shiba Inu">
+    <mat-card-actions>
+      <button aria-label="{{buttons.third}} story button" *ngIf="info[buttons.first]?.available > 0"
+              [routerLink]="" mat-button color="primary">Related {{buttons.first | titlecase}}
+      </button>
+      <button aria-label="{{buttons.third}} comic button" *ngIf="info[buttons.second]?.available > 0"
+              [routerLink]="" mat-button color="primary">Related {{buttons.second | titlecase}}
+      </button>
+      <button aria-label="{{buttons.third}} button"
+              [routerLink]="" mat-button color="primary">{{buttons.third | titlecase}} Details</button>
+    </mat-card-actions>
+  </mat-card>
+</section>
