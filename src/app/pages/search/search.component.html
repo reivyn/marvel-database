@@ -1,0 +1,5 @@
+<mat-form-field>
+  <mat-label>Search your {{label}}</mat-label>
+  <input id="search-box" name="search-box" aria-label="search-box" matInput placeholder="Search..."
+         [(ngModel)]="searchValue" (ngModelChange)="searchText($event)">
+</mat-form-field>

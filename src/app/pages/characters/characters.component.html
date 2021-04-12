@@ -1,0 +1,29 @@
+<header aria-label="Home Header" id="character-header">
+  <app-search [label]="'character'" [searchParams]="searchParams" (searchResult)="getSearchResult($event)"></app-search>
+</header>
+<main class="container" aria-label="Home Content" role="content">
+  <section id="quick-access" arial-label="Sections Quick Access">
+    <mat-card *ngFor="let info of (charactersData$ | async)" class="qa-sections-card" aria-label="Section Card">
+      <mat-card-header>
+        <mat-card-title>{{info.name}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]="info['thumbnail'].path + '.' + info['thumbnail']['extension']"
+           alt="Photo of a Shiba Inu">
+      <mat-card-actions>
+        <button class="related-story-btn" aria-label="Related Story Button" *ngIf="info['stories']['available'] > 0"
+                [routerLink]=""
+                mat-button color="primary">Related Stories
+        </button>
+        <button aria-label="Related Comic Button" *ngIf="info['comics']['available'] > 0" [routerLink]=""
+                mat-button color="primary">Related Comics
+        </button>
+        <button aria-label="Character Button" [routerLink]="" mat-button color="primary">Character Details</button>
+      </mat-card-actions>
+    </mat-card>
+  </section>
+  <mat-paginator #charactersPaginator
+                 [length]="paginatorLength" [pageSize]="20"
+                 [showFirstLastButtons]="true" (page)="changePage($event)">
+  </mat-paginator>
+  <app-footer></app-footer>
+</main>
