@@ -11,14 +11,13 @@ import {map} from 'rxjs/operators';
 })
 export class CharactersComponent implements OnInit {
   @ViewChild('cardsPaginator') charactersPaginator : MatPaginator;
-
   charactersData$: any;
   paginatorLength = 0;
   searchParams = {page: 0, type: 'Character'};
   hasSearchText = false;
   buttons = {
-    first: 'stories',
-    second: 'comics',
+    first: 'comics',
+    second: 'stories',
     third: 'characters'
   }
   loadingFlag = true;
@@ -31,8 +30,7 @@ export class CharactersComponent implements OnInit {
 
   /**
    * Call Marvel Character API - GET Method
-   * @param start
-   * @param searchName
+   * @param page
    */
   getAllCharacters(page = 0): Observable<any> {
     return this.charactersApi.get(page)

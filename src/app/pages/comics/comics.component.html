@@ -1,4 +1,4 @@
-<header aria-label="Home Header" class="search-header">
+<header *ngIf="!characterId" aria-label="Home Header" class="search-header">
   <app-search [label]="'comic'" [searchParams]="searchParams" (searchResult)="getSearchResult($event)"></app-search>
 </header>
 <main class="card-container" aria-label="Home Content" role="content">

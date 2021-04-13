@@ -23,21 +23,21 @@ export class HomeComponent implements OnInit {
       description: this.dummyDescription,
       imgUrl: 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/wrapup_4.jpg',
       btnLabel: 'Characters',
-      route: ''
+      route: '/characters'
     },
     {
       title: 'Marvel Comics',
       description: this.dummyDescription,
       imgUrl: 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengers_card_image_1.jpg',
       btnLabel: 'Comics',
-      route: ''
+      route: '/comics'
     },
     {
       title: 'Marvel Stories',
       description: this.dummyDescription,
       imgUrl: 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/mattymatt.jpg',
       btnLabel: 'Stories',
-      route: ''
+      route: '/stories'
     }
   ]
 
