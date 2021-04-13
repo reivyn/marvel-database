@@ -4,7 +4,7 @@ build-job:
     - npm install --silent
 
 test1-job:
-  stage: test1
+  stage: test
   script:
     - ng lint
 
