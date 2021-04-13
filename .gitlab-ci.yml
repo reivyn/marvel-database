@@ -14,6 +14,9 @@ build:
   image: node:14
   stage: build
   script:
+    - npm install @angular/cli@11
+    - npm install git
     - npm install
+    - git checkout master
     - ng lint
     - ng deploy --repo=https://github.com/reivyn/marvel-database.git
