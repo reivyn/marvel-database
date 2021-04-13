@@ -15,12 +15,5 @@ build:
   stage: build
   script:
     - npm install
-test:
-  stage: test
-  script:
     - ng lint
-
-deploy-prod:
-  stage: deploy
-  script:
     - ng deploy --repo=https://github.com/reivyn/marvel-database.git
