@@ -1,0 +1,18 @@
+<header aria-label="Home Header" class="search-header">
+  <app-search [label]="'character'" [searchParams]="searchParams" (searchResult)="getSearchResult($event)"></app-search>
+</header>
+<main class="card-container" aria-label="Home Content" role="content">
+  <mat-spinner *ngIf="loadingFlag"></mat-spinner>
+  <app-marvel-cards
+    [marvelData$]="charactersData$"
+    [type]="'characters'"
+    [buttons]="buttons">
+  </app-marvel-cards>
+  <div [hidden]="loadingFlag">
+    <mat-paginator #cardsPaginator
+                   [length]="paginatorLength" [pageSize]="20"
+                   [showFirstLastButtons]="true" (page)="changePage($event)">
+    </mat-paginator>
+  </div>
+  <app-footer></app-footer>
+</main>

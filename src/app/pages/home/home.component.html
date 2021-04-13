@@ -1,0 +1,31 @@
+<header aria-label="Home Header" id="home-header">
+  <div class="home-header-section">
+    <h1 class="mat-h1">Marvel Database</h1>
+    <h2 class="mat-h2">
+      Search Marvel superheroes, Comics and Stories.
+    </h2>
+  </div>
+</header>
+<main class="container" aria-label="Home Content" role="content">
+  <section id="introduction" aria-label="introduction">
+    <h1>Welcome to Marvel Database</h1>
+    <p>In this site, you will can search a loot of content related with your favorites Marvel superheroes, Marvel Comics
+      and Stories.</p>
+    <p>Also, you can add your favorite content to your Bookmarks to get a quick access to you selected content.</p>
+  </section>
+  <section id="quick-access" arial-label="Sections Quick Access">
+    <mat-card *ngFor="let info of homeCardData" class="qa-sections-card" aria-label="Section Card">
+      <mat-card-header>
+        <mat-card-title>{{info.title}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]="info.imgUrl" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>{{info.description}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button [routerLink]="info.route" mat-button>Go to {{info.btnLabel}}</button>
+      </mat-card-actions>
+    </mat-card>
+  </section>
+  <app-footer></app-footer>
+</main>

@@ -1,0 +1,43 @@
+$menu-box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%)
+
+.sidenav-container
+  height: 100%
+
+  .sidenav
+    width: 200px
+
+  .sidenav .mat-toolbar
+    background: inherit
+
+  mat-sidenav-content
+    .mat-toolbar.mat-primary
+      position: sticky
+      top: 0
+      z-index: 1
+      -webkit-box-shadow: $menu-box-shadow
+      box-shadow: $menu-box-shadow
+
+      span#logo-title
+        margin: 0 12px 0 4px
+
+      mat-nav-list.menu-items
+        display: flex
+        flex-direction: row
+        align-items: center
+        list-style-position: inside
+        padding: 0
+        margin: 0
+
+        a
+          border-radius: 5px
+          margin: 0 4px
+
+
+      div#menu-right-icon
+        width: 100%
+        display: flex
+        justify-content: flex-end
+
+
+
+

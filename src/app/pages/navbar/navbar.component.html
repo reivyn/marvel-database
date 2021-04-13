@@ -1,0 +1,31 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer fixedInViewport
+               class="sidenav"
+               role="navigation"
+               mode="over">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a *ngFor="let menuItem of menuList" mat-list-item [routerLink]="menuItem.url">{{menuItem.title}}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button *ngIf="isHandset$ | async"
+                type="button" aria-label="Toggle sidenav"
+                mat-icon-button (click)="drawer.toggle()">
+          <mat-icon aria-label="Sidenav toggle icon">menu</mat-icon>
+        </button>
+        <span id="logo-title">Marvel Database</span>
+        <mat-nav-list *ngIf="!(isHandset$ | async)" class="menu-items" role="navigation">
+          <a *ngFor="let menuItem of menuList" mat-button [routerLink]="menuItem.url">{{menuItem.title}}</a>
+        </mat-nav-list>
+        <div id="menu-right-icon">
+          <fa-icon [icon]="faAtomIcon" size="lg"></fa-icon>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

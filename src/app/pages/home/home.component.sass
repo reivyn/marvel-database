@@ -1,0 +1,49 @@
+// Header Style Rules
+@import "../../shared/variables.sass"
+
+header#home-header
+  position: relative
+  overflow: hidden
+  height: 15rem
+  background: $menu-color
+
+  .home-header-section
+    width: 100%
+    position: absolute
+    text-align: center
+    top: 50%
+    left: 50%
+    -ms-transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%)
+    color: $generic-white
+
+    h1.mat-h1
+      font-size: 2.5em
+
+    h2.mat-h2
+      margin: 12px
+
+// Main Container Style Rules
+main.container
+  section#introduction
+    text-align: center
+    padding: 30px 15px
+
+  section#quick-access
+    display: flex
+    justify-content: space-evenly
+    padding: 0 15px 30px
+    flex-wrap: wrap
+
+    mat-card.qa-sections-card
+      max-width: 320px
+      margin: 15px
+
+      mat-card-header
+        place-content: center
+
+      mat-card-actions
+        text-align: center
+
+
+

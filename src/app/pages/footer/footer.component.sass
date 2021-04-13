@@ -1,0 +1,45 @@
+@import "../../shared/variables.sass"
+
+footer.footer-container
+  background-color: $menu-color
+  padding: 12px
+  color: $generic-white
+  .footer-list
+    align-items: center
+    display: flex
+    flex-flow: row wrap
+    padding: 8px
+    div.footer-logo
+      flex: 1
+      padding-right: 26px
+      #footer-logo-content
+        display: flex
+        align-items: center
+        place-content: center
+        span
+          display: inline-block
+          outline: none
+          padding-left: 12px
+          cursor: pointer
+          font-size: 24px
+          white-space: nowrap
+    .footer-copyright
+      display: flex
+      flex-direction: column
+      align-self: flex-end
+      text-align: center
+      padding-top: 15px
+      width: 100%
+
+button fa-icon
+  color: $generic-white
+
+@media (min-width: 474px)
+  footer.footer-container
+    .footer-list
+      div#footer-logo-content
+        place-content: normal !important
+      div.footer-copyright
+        width: auto
+
+

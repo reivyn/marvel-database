@@ -1,0 +1,86 @@
+<main *ngIf="characterData" class="container">
+  <mat-card style="display: flex; flex-direction: row; flex-wrap: wrap; margin: 5%">
+    <div style="flex: 1 0 50%">
+      <img mat-card-image style="border-radius: 4px"
+           [src]="characterData['thumbnail']?.path + '/portrait_uncanny.' + characterData['thumbnail']?.extension"
+           alt="Character Photo">
+    </div>
+    <section style="flex: 1 0 45%; margin-left: 5%">
+      <div style="text-align: center">
+        <h1>{{characterData['name']}}</h1>
+      </div>
+      <div>
+        <p>{{characterData['description'] || 'Description Not Available'}}</p>
+      </div>
+      <div>
+        <mat-accordion>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header style="background: #673ab7;">
+              <mat-panel-title style="color: #ffffff;">
+                Comics
+              </mat-panel-title>
+              <mat-panel-description style="color: #ffffff;  opacity: .80;">
+                Related {{characterData['name']}} Comics
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-table *ngIf="relatedComics.available" [dataSource]="relatedComics.items" style="place-content: center">
+              <!-- User name Definition -->
+              <ng-container matColumnDef="Name">
+                <mat-header-cell *matHeaderCellDef> Comic Name</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+              </ng-container>
+              <!-- Header and Row Declarations -->
+              <mat-header-row *matHeaderRowDef="['Name']"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: ['Name']"></mat-row>
+            </mat-table>
+            <div style="text-align: center; margin-top: 8px">
+              <div *ngIf="!relatedComics.available">
+                <p style="font-weight: 700; padding-top: 16px">No Comics Related</p>
+              </div>
+              <div *ngIf="relatedComics.available">
+                <p style="font-weight: 700">.....</p>
+                <button mat-raised-button color="primary"
+                        [routerLink]="['/characters/' + characterData.id + '/comics']"> Go to full list</button>
+                <p style="text-align: right; margin-top: 14px; margin-bottom: 0;">
+                  Total Comics Availables: {{relatedComics.available}}</p>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <div style="margin: 10px"></div>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header style="background: #673ab7;">
+              <mat-panel-title style="color: #ffffff;">
+                Stories
+              </mat-panel-title>
+              <mat-panel-description style="color: #ffffff;  opacity: .80;">
+                Related {{characterData['name']}} Stories
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-table *ngIf="relatedStories.available" [dataSource]="relatedStories.items" style="place-content: center">
+              <!-- User name Definition -->
+              <ng-container matColumnDef="Name">
+                <mat-header-cell *matHeaderCellDef> Story Name</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+              </ng-container>
+              <!-- Header and Row Declarations -->
+              <mat-header-row *matHeaderRowDef="['Name']"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: ['Name']"></mat-row>
+            </mat-table>
+            <div style="text-align: center; margin-top: 8px">
+              <div *ngIf="!relatedStories.available">
+                <p style="font-weight: 700; padding-top: 16px">No Stories Related</p>
+              </div>
+              <div *ngIf="relatedStories.available">
+                <p style="font-weight: 700">.....</p>
+                <button mat-raised-button color="primary"> Go to full list</button>
+                <p style="text-align: right; margin-top: 14px; margin-bottom: 0;">
+                  Total Stories Availables: {{relatedStories.available}}</p>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </section>
+  </mat-card>
+</main>
+<app-footer></app-footer>
