@@ -1,10 +1,10 @@
-dependencies-job:
-  stage: preparation
+build-job:
+  stage: build
   script:
     - npm install --silent
 
-lint-job:
-  stage: lint
+test1-job:
+  stage: test1
   script:
     - ng lint
 
