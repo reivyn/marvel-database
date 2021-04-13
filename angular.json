@@ -122,6 +122,14 @@
               "devServerTarget": "marvel-database:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "https://reivyn.github.io/marvel-database/",
+            "name": "Ronaldo Marchant",
+            "email": "ronaldo.marchant.a@gmail.com",
+          }
         }
       }
     }
