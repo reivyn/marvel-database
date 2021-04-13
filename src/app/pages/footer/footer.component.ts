@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import  { faLinkedinIn }  from '@fortawesome/free-brands-svg-icons/faLinkedinIn';
-import { faAtom } from '@fortawesome/free-solid-svg-icons';
+import {Component, OnInit} from '@angular/core';
+import {faLinkedinIn} from '@fortawesome/free-brands-svg-icons/faLinkedinIn';
+import {faAtom} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-footer',
@@ -8,10 +8,11 @@ import { faAtom } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./footer.component.sass']
 })
 export class FooterComponent implements OnInit {
-  faLinkedinIn = faLinkedinIn
-  faAtom = faAtom
+  faLinkedinIn = faLinkedinIn;
+  faAtom = faAtom;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

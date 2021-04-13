@@ -21,7 +21,7 @@ export class ComicsComponent implements OnInit {
     first: 'characters',
     second: 'stories',
     third: 'comics'
-  }
+  };
   loadingFlag = true;
   characterId = null;
 
@@ -42,9 +42,8 @@ export class ComicsComponent implements OnInit {
   }
 
   /**
-   * Call Marvel Comics API - GET Method
-   * @param start
-   * @param searchName
+   * @description Call Marvel Comics API - GET Method
+   * @param page Current Page
    */
   getAllComics(page = 0): Observable<any> {
     return this.comicsService.get(page)
@@ -52,18 +51,17 @@ export class ComicsComponent implements OnInit {
         map(comics => {
           this.loadingFlag = false;
           if (page === 0) {
-            this.comicsPaginator.firstPage()
+            this.comicsPaginator.firstPage();
           }
-          this.paginatorLength = comics['total'] || 0;
-          return comics['results']
+          this.paginatorLength = comics?.total || 0;
+          return comics?.results;
         })
       );
   }
 
   /**
-   * Ger all related comic from a character
-   * @param start
-   * @param searchName
+   * @description Ger all related comic from a character
+   * @param page Current Page
    */
   getAllCharacterComics(page = 0): Observable<any> {
     return this.comicsService.getCharacterComics(page, this.characterId)
@@ -71,19 +69,19 @@ export class ComicsComponent implements OnInit {
         map(comics => {
           this.loadingFlag = false;
           if (page === 0) {
-            this.comicsPaginator.firstPage()
+            this.comicsPaginator.firstPage();
           }
-          this.paginatorLength = comics['total'] || 0;
-          return comics['results']
+          this.paginatorLength = comics?.total || 0;
+          return comics?.results;
         })
       );
   }
 
   /**
-   * Function to handle the page change.
-   * @param $event
+   * @description Function to handle the page change.
+   * @param $event triggered when change page
    */
-  changePage($event: PageEvent) {
+  changePage($event: PageEvent): void {
     if (!this.hasSearchText) {
       this.loadingFlag = true;
       if (this.characterId) {
@@ -97,14 +95,14 @@ export class ComicsComponent implements OnInit {
   }
 
   /**
-   * Handle Search Box Result
-   * @param $event
+   * @description Handle Search Box Result
+   * @param $event Search Results Data
    */
-  getSearchResult($event) {
+  getSearchResult($event): void {
     this.hasSearchText = !!$event;
     if ($event) {
       if ($event.offset === 0) {
-        this.comicsPaginator.firstPage()
+        this.comicsPaginator.firstPage();
       }
       this.comicsData$ = $event.data;
       this.paginatorLength = $event.totalItems;
@@ -113,5 +111,4 @@ export class ComicsComponent implements OnInit {
       this.comicsData$ = this.getAllComics(0);
     }
   }
-
 }

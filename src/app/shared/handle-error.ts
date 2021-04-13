@@ -1,13 +1,12 @@
 import {HttpErrorResponse} from '@angular/common/http';
-import {throwError} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 
 
 /**
- *  HandleError
- * @param error
+ * @description Handle Errors Function
+ * @param error Error Response from Server
  */
-
-export function handleError(error: HttpErrorResponse) {
+export function handleError(error: HttpErrorResponse): Observable<never> {
   if (error.error instanceof ErrorEvent) {
     // A client-side or network error occurred. Handle it accordingly.
     console.error('An error occurred:', error.error.message);

@@ -10,7 +10,7 @@ import {map} from 'rxjs/operators';
   styleUrls: ['./characters.component.sass']
 })
 export class CharactersComponent implements OnInit {
-  @ViewChild('cardsPaginator') charactersPaginator : MatPaginator;
+  @ViewChild('cardsPaginator') charactersPaginator: MatPaginator;
   charactersData$: any;
   paginatorLength = 0;
   searchParams = {page: 0, type: 'Character'};
@@ -19,10 +19,11 @@ export class CharactersComponent implements OnInit {
     first: 'comics',
     second: 'stories',
     third: 'characters'
-  }
+  };
   loadingFlag = true;
 
-  constructor(private charactersApi: CharactersService) {}
+  constructor(private charactersApi: CharactersService) {
+  }
 
   ngOnInit(): void {
     this.charactersData$ = this.getAllCharacters();
@@ -30,25 +31,25 @@ export class CharactersComponent implements OnInit {
 
   /**
    * Call Marvel Character API - GET Method
-   * @param page
    */
   getAllCharacters(page = 0): Observable<any> {
     return this.charactersApi.get(page)
       .pipe(
         map(characters => {
           this.loadingFlag = false;
-          if(page === 0) {this.charactersPaginator.firstPage()}
-          this.paginatorLength = characters['total'] || 0;
-          return characters['results']
+          if (page === 0) {
+            this.charactersPaginator.firstPage();
+          }
+          this.paginatorLength = characters?.total || 0;
+          return characters?.results;
         })
       );
   }
 
   /**
    * Function to handle the page change.
-   * @param $event
    */
-  changePage($event: PageEvent) {
+  changePage($event: PageEvent): void {
     if (!this.hasSearchText) {
       this.loadingFlag = true;
       this.charactersData$ = this.getAllCharacters($event.pageIndex * 20);
@@ -59,12 +60,13 @@ export class CharactersComponent implements OnInit {
 
   /**
    * Handle Search Box Result
-   * @param $event
    */
-  getSearchResult($event) {
+  getSearchResult($event): void {
     this.hasSearchText = !!$event;
     if ($event) {
-      if($event.offset === 0){ this.charactersPaginator.firstPage()}
+      if ($event.offset === 0) {
+        this.charactersPaginator.firstPage();
+      }
       this.charactersData$ = $event.data;
       this.paginatorLength = $event.totalItems;
     } else {
