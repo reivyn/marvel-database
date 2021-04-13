@@ -1,0 +1,14 @@
+dependencies-job:
+  stage: preparation
+  script:
+    - npm install --silent
+
+lint-job:
+  stage: lint
+  script:
+    - ng lint
+
+deploy-prod:
+  stage: deploy
+  script:
+    - ng deploy --repo=https://github.com/reivyn/marvel-database.git
