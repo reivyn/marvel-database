@@ -1,7 +1,8 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {SearchService} from '../../services/search.service';
 import {Observable, Subject} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, switchMap} from 'rxjs/operators';
+import {SearchResult} from '../../shared/interfaces';
 
 @Component({
   selector: 'app-search',
@@ -50,10 +51,10 @@ export class SearchComponent implements OnInit, OnChanges {
           return this.searchData$ =
             this.searchService[`get${this.searchParams.type}ById`](params.page || 0, params.value)
               .pipe(
-                map((value: any) => {
+                map((value: SearchResult) => {
                   this.totalItems = value.total;
                   this.currentOffset = value.offset;
-                  return value.result;
+                  return value.results;
                 }));
         }
       )).subscribe(() => {
