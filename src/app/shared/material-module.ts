@@ -9,6 +9,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {LayoutModule} from '@angular/cdk/layout';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   exports: [
@@ -21,7 +24,10 @@ import {MatInputModule} from '@angular/material/input';
     MatCardModule,
     ScrollingModule,
     MatPaginatorModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule,
+    MatTableModule
   ]
 })
 export class MaterialSharedModule {}

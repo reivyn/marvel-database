@@ -31,7 +31,21 @@ export class ComicsService {
         retry(3),
         catchError(handleError),
         map(source => source['data']),
-        shareReplay()
+        // shareReplay()
+      );
+  }
+
+  getCharacterComics(pageIndex, characterId): Observable<any> {
+    const options = {params: this.defaultParams}
+    options.params = options.params.append('offset', pageIndex);
+    options.params = options.params.append('characterId', characterId);
+
+    return this.http.get<any>(`${environment.marvelCharactersAPI}/${characterId}/comics`, options)
+      .pipe(
+        retry(3),
+        catchError(handleError),
+        map(source => source['data']),
+        // shareReplay()
       );
   }
 }

@@ -12,10 +12,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {CharactersComponent} from './pages/characters/characters.component';
 import {MaterialSharedModule} from './shared/material-module';
 import {FormsModule} from '@angular/forms';
-import { SearchComponent } from './pages/search/search.component';
-import { ComicsComponent } from './pages/comics/comics.component';
+import {SearchComponent} from './pages/search/search.component';
+import {ComicsComponent} from './pages/comics/comics.component';
 import {MarvelCardsComponent} from './pages/marvel-cards/marvel-cards.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {CharacterDetailsComponent} from './pages/character-details/character-details.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     FooterComponent,
     SearchComponent,
     ComicsComponent,
-    MarvelCardsComponent
+    MarvelCardsComponent,
+    CharacterDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -35,8 +36,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MaterialSharedModule,
     FontAwesomeModule,
     HttpClientModule,
-    FormsModule,
-    MatProgressSpinnerModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

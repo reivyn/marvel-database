@@ -33,4 +33,19 @@ export class CharactersService {
         shareReplay()
       );
   }
+
+  /**
+   * Get Marvel Character By Id
+   * @param id
+   */
+  getByID(id): Observable<any> {
+    const options = {params: this.defaultParams}
+
+    return this.http.get<any>(`${environment.marvelCharactersAPI}/${id}`, options)
+      .pipe(
+        retry(3),
+        catchError(handleError),
+        map(source => source['data'])
+      );
+  }
 }
