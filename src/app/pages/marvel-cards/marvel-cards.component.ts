@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./marvel-cards.component.sass']
 })
 export class MarvelCardsComponent {
-  @Input() marvelData$: Observable<any>
-  @Input() type: string
-  @Input() buttons: {first; second; third;}
+  @Input() marvelData$: Observable<any>;
+  @Input() type: string;
+  @Input() buttons: { first; second; third; };
 }

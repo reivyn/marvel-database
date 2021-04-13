@@ -18,19 +18,19 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private charactersService: CharactersService
-    ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.charactersService.getByID(id)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(value => {
-        console.log(value)
-        const valueResults = value['results'];
+        const valueResults = value?.results;
         this.relatedComics = valueResults[0]?.comics || [];
         this.relatedStories = valueResults[0]?.stories || [];
-        this.characterData =  valueResults[0] || []
-    });
+        this.characterData = valueResults[0] || [];
+      });
   }
 
   ngOnDestroy(): void {

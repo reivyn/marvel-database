@@ -3,6 +3,7 @@ import {environment} from '../../environments/environment';
 import {catchError, map, retry, shareReplay} from 'rxjs/operators';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {handleError} from '../shared/handle-error';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +19,12 @@ export class SearchService {
 
 
   /**
-   * Get Marvel Heroes by ID
-   * @param pageIndex
-   * @param nameStartsWith
+   * @description Get Marvel Heroes by ID
+   * @param pageIndex Current Page Index
+   * @param nameStartsWith Text to Search
    */
-  getCharacterById(pageIndex, nameStartsWith) {
-    const options = {params: this.defaultParams}
+  getCharacterById(pageIndex, nameStartsWith): Observable<any> {
+    const options = {params: this.defaultParams};
     options.params = options.params.append('offset', pageIndex);
     options.params = options.params.append('nameStartsWith', nameStartsWith);
 
@@ -31,18 +32,18 @@ export class SearchService {
       .pipe(
         retry(3),
         catchError(handleError),
-        map(source => source['data']),
+        map(source => source?.data),
         shareReplay()
       );
   }
 
   /**
-   * Get Marvel Comics by ID
-   * @param pageIndex
-   * @param nameStartsWith
+   * @description Get Marvel Comics by ID
+   * @param pageIndex Current Page Index
+   * @param nameStartsWith Text to Search
    */
-  getComicById(pageIndex, nameStartsWith) {
-    const options = {params: this.defaultParams}
+  getComicById(pageIndex, nameStartsWith): Observable<any> {
+    const options = {params: this.defaultParams};
     options.params = options.params.append('offset', pageIndex);
     options.params = options.params.append('titleStartsWith', nameStartsWith);
 
@@ -50,29 +51,27 @@ export class SearchService {
       .pipe(
         retry(3),
         catchError(handleError),
-        map(source => source['data']),
+        map(source => source?.data),
         shareReplay()
       );
   }
 
   /**
-   * Get Marvel Stories by ID
-   * @param pageIndex
-   * @param nameStartsWith
+   * @description Get Marvel Stories by ID
+   * @param pageIndex Current Page Index
+   * @param nameStartsWith Text to Search
    */
-  getStorieById(pageIndex, nameStartsWith) {
-    const options = {params: this.defaultParams}
+  getStorieById(pageIndex, nameStartsWith): Observable<any> {
+    const options = {params: this.defaultParams};
     options.params = options.params.append('offset', pageIndex);
     options.params = options.params.append('nameStartsWith', nameStartsWith);
 
-    console.log('ID')
     return this.http.get<any>(environment.marvelCharactersAPI, options)
       .pipe(
         retry(3),
         catchError(handleError),
-        map(source => source['data']),
+        map(source => source?.data),
         shareReplay()
       );
   }
-
 }

@@ -19,33 +19,31 @@ export class CharactersService {
 
   /**
    * Get All Marvel Characters
-   * @param pageIndex
+   * @param pageIndex Current Page Index
    */
   get(pageIndex): Observable<any> {
-    const options = {params: this.defaultParams}
+    const options = {params: this.defaultParams};
     options.params = options.params.append('offset', pageIndex);
-
     return this.http.get<any>(environment.marvelCharactersAPI, options)
       .pipe(
         retry(3),
         catchError(handleError),
-        map(source => source['data']),
+        map(source => source?.data),
         shareReplay()
       );
   }
 
   /**
    * Get Marvel Character By Id
-   * @param id
+   * @param id Character ID
    */
   getByID(id): Observable<any> {
-    const options = {params: this.defaultParams}
-
+    const options = {params: this.defaultParams};
     return this.http.get<any>(`${environment.marvelCharactersAPI}/${id}`, options)
       .pipe(
         retry(3),
         catchError(handleError),
-        map(source => source['data'])
+        map(source => source?.data)
       );
   }
 }

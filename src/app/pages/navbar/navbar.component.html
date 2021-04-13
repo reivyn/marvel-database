@@ -17,7 +17,7 @@
           <mat-icon aria-label="Sidenav toggle icon">menu</mat-icon>
         </button>
         <span id="logo-title">Marvel Database</span>
-        <mat-nav-list *ngIf="!(isHandset$ | async)" class="menu-items" role="navigation">
+        <mat-nav-list *ngIf="(isHandset$ | async) === false" class="menu-items" role="navigation">
           <a *ngFor="let menuItem of menuList" mat-button [routerLink]="menuItem.url">{{menuItem.title}}</a>
         </mat-nav-list>
         <div id="menu-right-icon">

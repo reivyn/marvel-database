@@ -3,7 +3,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
 // Font-Awesome Icons import
-import { faAtom } from '@fortawesome/free-solid-svg-icons';
+import {faAtom} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -13,15 +13,15 @@ import { faAtom } from '@fortawesome/free-solid-svg-icons';
 })
 export class NavbarComponent {
 
-  //Icon list declaration
+  // Icon list declaration
   faAtomIcon = faAtom;
 
   menuList = [
     {title: 'Home', url: ''},
     {title: 'Characters', url: 'characters'},
-    {title: 'Comics',url: 'comics'},
-    {title: 'Stories',url: ''},
-    {title: 'My Bookmarks',url: ''}]
+    {title: 'Comics', url: 'comics'},
+    {title: 'Stories', url: ''},
+    {title: 'My Bookmarks', url: ''}];
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -29,6 +29,7 @@ export class NavbarComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver) {
+  }
 
 }
