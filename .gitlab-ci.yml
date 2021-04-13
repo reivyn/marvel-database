@@ -1,0 +1,10 @@
+build:
+ stage: build
+ image: trion/ng-cli
+ before_script:
+  - npm ci
+ script:
+  - ng lint
+  - ng deploy --repo=https://github.com/reivyn/marvel-database.git
+ tags:
+  - docker
