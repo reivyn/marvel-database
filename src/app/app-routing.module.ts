@@ -7,13 +7,13 @@ import {CharacterDetailsComponent} from './pages/character-details/character-det
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent },
-  {path: 'home', redirectTo: ''},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent },
   {path: 'characters', component: CharactersComponent},
   {path: 'characters/:id', component: CharacterDetailsComponent},
   {path: 'characters/:id/comics', component: ComicsComponent},
   {path: 'comics', component: ComicsComponent},
-  {path: '**', redirectTo: ''}
+  {path: '**', redirectTo: 'home'}
 ];
 
 @NgModule({
