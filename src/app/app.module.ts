@@ -16,6 +16,7 @@ import {SearchComponent} from './pages/search/search.component';
 import {ComicsComponent} from './pages/comics/comics.component';
 import {MarvelCardsComponent} from './pages/marvel-cards/marvel-cards.component';
 import {CharacterDetailsComponent} from './pages/character-details/character-details.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import {CharacterDetailsComponent} from './pages/character-details/character-det
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [MatSnackBar],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

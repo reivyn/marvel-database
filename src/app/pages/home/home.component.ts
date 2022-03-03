@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
       title: 'Marvel Stories',
       description: this.dummyDescription,
       imgUrl: 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/mattymatt.jpg',
-      btnLabel: 'Stories',
+      btnLabel: 'Stories (Available Soon)',
       route: '/stories'
     }
   ];

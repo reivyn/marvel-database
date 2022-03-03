@@ -20,8 +20,7 @@ export class NavbarComponent {
     {title: 'Home', url: ''},
     {title: 'Characters', url: 'characters'},
     {title: 'Comics', url: 'comics'},
-    {title: 'Stories', url: ''},
-    {title: 'My Bookmarks', url: ''}];
+   ];
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

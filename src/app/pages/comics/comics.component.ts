@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ComicsService} from '../../services/comics.service';
 import {ActivatedRoute} from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-comics',
@@ -25,13 +26,18 @@ export class ComicsComponent implements OnInit {
   loadingFlag = true;
   characterId = null;
 
+
   constructor(
     private route: ActivatedRoute,
-    private comicsService: ComicsService
-  ) {
+    private comicsService: ComicsService,
+    private _snackBar: MatSnackBar) {}
+
+  openSnackBar(message: string, action: string) {
+
   }
 
   ngOnInit(): void {
+    this._snackBar.open('Sorry, this page is under construction', 'Dismiss');
     this.characterId = this.route.snapshot.paramMap.get('id');
     // console.log(characterId)
     if (this.characterId) {

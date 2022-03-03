@@ -3,6 +3,7 @@
 </header>
 <main class="card-container" aria-label="Home Content" role="content">
   <mat-spinner *ngIf="loadingFlag"></mat-spinner>
+  <div></div>
   <app-marvel-cards
     [marvelData$]="comicsData$"
     [type]="'comics'"
@@ -14,5 +15,4 @@
                    [showFirstLastButtons]="true" (page)="changePage($event)">
     </mat-paginator>
   </div>
-  <app-footer></app-footer>
 </main>
